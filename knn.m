@@ -1,10 +1,11 @@
-function nearestNeighbors = knn(k,observation,trainingSet,numProperties)
+function label = knn(k,observation,trainingSet,numProperties)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% k: the number of neighbors used to classify the observation    %%%
 %%% observation: [ID, properties, label]                           %%%
 %%% trainingSet: [ID, properties, label] for each datapoint        %%%
 %%% numProperties: number of properties used to classify the       %%%
 %%%                observation                                     %%%
+%%% label: the label that the observation is classified as         %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % initialize array of distances and differances
@@ -19,11 +20,15 @@ for dataPoint=1:size(trainingSet,1)
     % Find the distance between observation and each datapoint
     id = trainingSet(dataPoint,1);
     dist = norm(diff(dataPoint,:));
-    distArray(dataPoint,:) = [id, dist];
+    label = trainingSet(dataPoint,end);
+    distArray(dataPoint,:) = [id, dist, label];
 end
 
 % Sort and return the ID of the k nearest datapoints
-distArray = sort(distArray,1);
+distArray = sort(distArray,2);
 nearestNeighbors = distArray(1:k,1);
+
+% Get most frequent label among k nearest neighbors
+label = mode(nearestNeighbors, 3);
 
 end
