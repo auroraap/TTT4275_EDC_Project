@@ -14,4 +14,5 @@ Essensen:
     - Let opp IDene sin sjanger og bestem hvilken som er representert mest = klassifisert
 
 Lagre hvilken observasjon vi har sett på (ID) og hvilken sjanger den ble tildelt. Sammenlign så dette med hvilken sjanger observasjonen faktisk hadde og lag en confusion matrix av dette.
-NB! Det finnes on confusion-funksjon i Matlab fra før så dette må vi ikke lage selv. Trenger da en liste med det vi har klassifisert, og en liste med fasiten.
+
+*NB!* Det finnes on confusion-funksjon i Matlab fra før så dette må vi ikke lage selv. Trenger da en liste med det vi har klassifisert, og en liste med fasiten.
