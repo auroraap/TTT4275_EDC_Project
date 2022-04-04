@@ -1,4 +1,4 @@
-function label = knn(k,observation,trainingSet,numProperties)
+function predLabel = knn(k,observation,trainingSet,numProperties)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% k: the number of neighbors used to classify the observation    %%%
 %%% observation: [ID, properties, label]                           %%%
@@ -29,6 +29,6 @@ distArray = sort(distArray,2);
 nearestNeighbors = distArray(1:k,1);
 
 % Get most frequent label among k nearest neighbors
-label = mode(nearestNeighbors, 3);
+predLabel = mode(nearestNeighbors, 3);
 
 end
