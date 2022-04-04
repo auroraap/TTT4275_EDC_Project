@@ -10,7 +10,7 @@ function nearestNeighbors = knn(k,observation,trainingSet,numProperties)
 distArray = NaN(size(trainingSet,1),2);     % initialize array of distances
 
 % Find difference between observation and each datapoint for each property
-for property=1:numProperties
+for property=2:numProperties+1
     diff = observation(:,property) - trainingSet(:,property);
 end
 
