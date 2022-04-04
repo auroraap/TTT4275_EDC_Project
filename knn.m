@@ -5,7 +5,7 @@ function predLabel = knn(k,observation,trainingSet,numProperties)
 %%% trainingSet: [ID, properties, label] for each datapoint        %%%
 %%% numProperties: number of properties used to classify the       %%%
 %%%                observation                                     %%%
-%%% label: the label that the observation is classified as         %%%
+%%% predLabel: the label that the observation is classified as     %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % initialize array of distances and differances
