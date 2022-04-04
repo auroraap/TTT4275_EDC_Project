@@ -13,6 +13,8 @@ Essensen:
   - Blant de k nærmeste, hvilken sjanger er representert mest -> dette er det vi klassifiserer observasjonen som
     - Let opp IDene sin sjanger og bestem hvilken som er representert mest = klassifisert
 
+**Hvordan definerer vi avstand?** Har lagd et utkast for å bruke norm i stedet for sum av differanse, dette er sikkert bedre. Putter da differansene i et array og tar normen av dette.
+
 Lagre hvilken observasjon vi har sett på (ID) og hvilken sjanger den ble tildelt. Sammenlign så dette med hvilken sjanger observasjonen faktisk hadde og lag en confusion matrix av dette.
 
 *NB!* Det finnes on confusion-funksjon i Matlab fra før så dette må vi ikke lage selv. Trenger da en liste med det vi har klassifisert, og en liste med fasiten.
