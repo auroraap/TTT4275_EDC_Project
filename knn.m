@@ -1,5 +1,6 @@
 function nearestNeighbors = knn(k,observation,trainingSet)
 % observation and training set contains: [ID, properties, label]
+% note that this function is meant for a single observation
 
 diffArray = NaN(size(trainingSet,1),2);
 
