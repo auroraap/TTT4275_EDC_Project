@@ -1,16 +1,16 @@
-function nearestNeighbors = knn(k,observation,trainingSet)
+function nearestNeighbors = knn(k,observation,trainingSet,numProperties)
 % observation and training set contains: [ID, properties, label]
-% note that this function is meant for a single observation
 
 diffArray = NaN(size(trainingSet,1),2);
+distanceArray = NaN(numProperties);
 
 for dataPoint=1:size(trainingSet,1)
-    diff = 0;
     id = observation(1);
-    for property=2:size(trainingSet,2)-1
-        diff = diff + (observation(dataPoint,property) - trainingSet(dataPoint,property));
+    for i=1:numProperties
+        property = i+1;
+        distanceArray(i) = observation(dataPoint,property) - trainingSet(dataPoint,property);
     end
-    diffArray(dataPoint,:) = [id, diff];
+    diffArray(dataPoint,:) = [id, norm(distanceArray)];
 end
 
 diffArray = sort(diffArray,1);
