@@ -16,10 +16,7 @@ for dataPoint=1:size(trainingSet,1)
     for property=1:numProperties
         diff(dataPoint,property) = observation(property+1) - trainingSet(dataPoint,property+1);
     end
-end
-
-% Find the distance between observation and each datapoint
-for dataPoint=1:size(trainingSet,1)
+    % Find the distance between observation and each datapoint
     id = trainingSet(dataPoint,1);
     dist = norm(diff(dataPoint,:));
     distArray(dataPoint,:) = [id, dist];
