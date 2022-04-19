@@ -1,5 +1,5 @@
 %% Extract data
-clear; part1_dataExtract;
+clear; dataExtract;
 
 %% Classify test set
 n_tests = size(testSet,1);
@@ -10,4 +10,9 @@ for testItem=1:n_tests
 end
 
 %% Plot confusion chart
-confusionchart(testLabels_30s,predLabel);
+close all;
+fig1 = figure;
+cm = confusionchart(testLabels_30s,predLabel);
+% cm.Title = '';
+cm.RowSummary = 'row-normalized';
+hgexport(fig1, 'part1_confusion.eps');
