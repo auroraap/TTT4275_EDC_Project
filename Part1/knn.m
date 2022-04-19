@@ -1,30 +1,31 @@
 function label = knn(k,observation,trainingSet,numProperties)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% k: the number of neighbors used to classify the observation    %%%
-%%% observation: [ID, properties, label]                           %%%
-%%% trainingSet: [ID, properties, label] for each datapoint        %%%
-%%% numProperties: number of properties used to classify the       %%%
-%%%                observation                                     %%%
-%%% label: the label that the observation is classified as         %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% k: the number of neighbors used to classify the observation      %%%
+%%% observation: [[properties], label]                           %%%
+%%% trainingSet: [[properties], label] for each datapoint        %%%
+%%% numProperties: number of properties used to classify the         %%%
+%%%                observation                                       %%%
+%%% label: the label that the observation is classified as           %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+sizeTrainingSet = size(trainingSet,1);
 
 % initialize array of distances and differances
-distArray = NaN(size(trainingSet,1),2);
-diff      = NaN(size(trainingSet,1),numProperties);
+distMatrix = NaN(sizeTrainingSet,2);
+diff      = NaN(1,numProperties);
 
 % Find difference between observation and each datapoint for each property
-for dataPoint=1:size(trainingSet,1)
+for dataPoint=1:sizeTrainingSet
     for property=1:numProperties
-        diff(dataPoint,property) = observation(property+1) - trainingSet(dataPoint,property+1);
+        diff(property) = observation(property) - trainingSet(dataPoint,property);
     end
     % Find the distance between observation and each datapoint
-    dist = norm(diff(dataPoint,:));
+    dist = norm(diff);
     label = trainingSet(dataPoint,end);
-    distArray(dataPoint,:) = [dist, label];
+    distMatrix(dataPoint,:) = [dist, label];
 end
 
-distArray = sortrows(distArray);
-neighbors = distArray(1:k,:);
+distMatrix = sortrows(distMatrix);
+neighbors = distMatrix(1:k,:);
 
 label = mode(neighbors(:,2),[k, 1]);
 
