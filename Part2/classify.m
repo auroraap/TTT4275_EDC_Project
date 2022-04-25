@@ -14,19 +14,19 @@ predLabel_4 = NaN(numTests,1);
 
 % Classify with one feature excluded at a time
 for testItem=1:numTests
-    predLabel_1(testItem) = knn(5, testSet(testItem,2:end), trainingSet(:,2:end), 3);
+    predLabel_1(testItem) = knn(5, testSet(testItem,2:end), trainingSet(:,2:end));
 end
 
 for testItem=1:numTests
-    predLabel_2(testItem) = knn(5, [testSet(testItem,1), testSet(testItem,3:end)], [trainingSet(:,1),trainingSet(:,3:end)], 3);
+    predLabel_2(testItem) = knn(5, [testSet(testItem,1), testSet(testItem,3:end)], [trainingSet(:,1),trainingSet(:,3:end)]);
 end
 
 for testItem=1:numTests
-    predLabel_3(testItem) = knn(5, [testSet(testItem,1:2), testSet(testItem,4:end)], [trainingSet(:,1:2),trainingSet(:,4:end)], 3);
+    predLabel_3(testItem) = knn(5, [testSet(testItem,1:2), testSet(testItem,4:end)], [trainingSet(:,1:2),trainingSet(:,4:end)]);
 end
 
 for testItem=1:numTests
-    predLabel_4(testItem) = knn(5, [testSet(testItem,1:3), testSet(testItem,end)], [trainingSet(:,1:3),trainingSet(:,end)], 3);
+    predLabel_4(testItem) = knn(5, [testSet(testItem,1:3), testSet(testItem,end)], [trainingSet(:,1:3),trainingSet(:,end)]);
 end
 
 %% Plot confusion charts

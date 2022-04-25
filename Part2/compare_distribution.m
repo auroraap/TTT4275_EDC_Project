@@ -7,7 +7,7 @@ pop = 0; metal = 1; disco = 2; classical = 5;
 numFeatures = 4;
 sizeTrainingSet = size(trainingSet,1);
 
-% Initialize genre data sets
+% Initialize genre data sets, and indices for iteration
 popSet          = NaN(79,numFeatures); popIndex = 1;
 metalSet        = NaN(80,numFeatures); metalIndex = 1;
 discoSet        = NaN(79,numFeatures); discoIndex = 1;
@@ -36,38 +36,70 @@ end
 %% Plot histograms for the 4 features
 close all;
 
-ft1 = figure;
+fig1 = figure;
 
-subplot(411); histogram(popSet(:,1),10); title('Pop');
-subplot(412); histogram(metalSet(:,1),10); title('Metal');
-subplot(413); histogram(discoSet(:,1),10); title('Disco');
-subplot(414); histogram(classicalSet(:,1),10); title('Classical');
-sgtitle('Spectral rolloff mean');
-hgexport(ft1, 'ft1_hist.eps');
+subplot(221);
+histogram(popSet(:,1),10); hold on; grid on;
+histogram(metalSet(:,1),10);
+histogram(discoSet(:,1),10);
+histogram(classicalSet(:,1),10);
+title('Spectral rolloff mean');
+legend('Pop', 'Metal', 'Disco', 'Classical');
 
-ft2 = figure;
+subplot(222);
+histogram(popSet(:,2),10); hold on; grid on;
+histogram(metalSet(:,2),10);
+histogram(discoSet(:,2),10);
+histogram(classicalSet(:,2),10);
+title('MFCC 1 mean');
 
-subplot(411); histogram(popSet(:,2),10); title('Pop');
-subplot(412); histogram(metalSet(:,2),10); title('Metal');
-subplot(413); histogram(discoSet(:,2),10); title('Disco');
-subplot(414); histogram(classicalSet(:,2),10); title('Classical');
-sgtitle('MDCC 1 mean');
-hgexport(ft2, 'ft2_hist.eps');
+subplot(223);
+histogram(popSet(:,3),10); hold on; grid on;
+histogram(metalSet(:,3),10);
+histogram(discoSet(:,3),10);
+histogram(classicalSet(:,3),10);
+title('Spectral centroid mean');
 
-ft3 = figure;
+subplot(224);
+histogram(popSet(:,4),10); hold on; grid on;
+histogram(metalSet(:,4),10);
+histogram(discoSet(:,4),10);
+histogram(classicalSet(:,4),10);
+title('Tempo');
 
-subplot(411); histogram(popSet(:,3),10); title('Pop');
-subplot(412); histogram(metalSet(:,3),10); title('Metal');
-subplot(413); histogram(discoSet(:,3),10); title('Disco');
-subplot(414); histogram(classicalSet(:,3),10); title('Classical');
-sgtitle('Spectral centroid mean');
-hgexport(ft3, 'ft3_hist.eps');
+set(fig1,'position',[100,100,800,500])
+hgexport(fig1, 'histograms.eps');
 
-ft4 = figure;
+fig2 = figure;
 
-subplot(411); histogram(popSet(:,4),10); title('Pop');
-subplot(412); histogram(metalSet(:,4),10); title('Metal');
-subplot(413); histogram(discoSet(:,4),10); title('Disco');
-subplot(414); histogram(classicalSet(:,4),10); title('Classical');
-sgtitle('Tempo');
-hgexport(ft4, 'ft4_hist.eps');
+subplot(221);
+histogram(popSet(:,1),10); hold on; grid on;
+histogram(popSet(:,2),5);
+histogram(popSet(:,3),10);
+histogram(popSet(:,4),2);
+title('Pop');
+legend('Spectral rolloff mean','MFCC 1 mean','Spectral centroid mean', 'Tempo');
+
+subplot(222);
+histogram(metalSet(:,1),10); hold on; grid on;
+histogram(metalSet(:,2),5);
+histogram(metalSet(:,3),10);
+histogram(metalSet(:,4),2);
+title('Metal');
+
+subplot(223);
+histogram(discoSet(:,1),10); hold on; grid on;
+histogram(discoSet(:,2),5);
+histogram(discoSet(:,3),10);
+histogram(discoSet(:,4),2);
+title('Disco');
+
+subplot(224);
+histogram(classicalSet(:,1),10); hold on; grid on;
+histogram(classicalSet(:,2),5);
+histogram(classicalSet(:,3),10);
+histogram(classicalSet(:,4),2);
+title('Classical');
+
+set(fig2,'position',[300,300,800,500])
+hgexport(fig2, 'histograms_genre.eps');
