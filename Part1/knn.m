@@ -15,7 +15,7 @@ distMatrix = NaN(sizeTrainingSet,2);
 
 % Find difference between observation and each datapoint for each property
 for dataPoint=1:sizeTrainingSet
-    % Find the distance between observation and each datapoint
+    % Find the euclidean distance between observation and each datapoint
     distance = dist(trainingSet(dataPoint,1:end-1), observation(1:end-1)');
     label = trainingSet(dataPoint,end);
     distMatrix(dataPoint,:) = [distance, label];
