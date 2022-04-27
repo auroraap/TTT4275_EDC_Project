@@ -1,6 +1,6 @@
 # TTT4275 - Classification project
 This project is part of the course TTT4275.
-The task is to implement a few different classifiers to determine the genre of a set of music tracks.
+The task is to implement classifiers to determine the genres of a set of music tracks.
 
 ## Part 1
 (a) Design a k-NN classifier (with k = 5) for all ten genres using only the following four features: spectral rolloff mean, mfcc 1 mean, spec- tral centroid mean and tempo.
